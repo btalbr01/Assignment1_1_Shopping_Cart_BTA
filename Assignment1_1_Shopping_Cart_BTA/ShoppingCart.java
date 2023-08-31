@@ -3,66 +3,66 @@ public class ShoppingCart {
 
 	public static void main(String[] args) {
 		int totalCost = 0;
-		ArrayBag<String> items = new ArrayBag<String>(10); //initializes a bag to hold 10 items
-		//checks if the cart is empty
-		if(items.isEmpty())
+		BagInterface<Item> shoppingCart = new ArrayBag<Item>();
+		
+		//checks if the initial cart is empty
+		if(shoppingCart.isEmpty())
 			System.out.println("The cart is empty");
 		else System.out.println("The cart is not empty");
 		
-		//adding items and their prices to the cart
-		ArrayBag[] cart = {new ArrayBag("Potatoes", 599),
-						   new ArrayBag("Wrench", 1299),
-						   new ArrayBag("Vacuum", 5599),
-						   new ArrayBag("Jeans", 2299),
-						   new ArrayBag("Roses", 2399)};
+		//creates Item objects - names and prices
+		Item[] items = {new Item("Cheese", 599),
+						new Item("Wrench", 1299),
+						new Item("Vacuum", 5599),
+						new Item("Jeans", 2299),
+						new Item("Ice Cream", 499),
+						new Item("Cheese", 599),
+						new Item("Roses", 2399)};
 		
-		for (int index = 0; index < cart.length; index++)
+		//loops through all items and adds them to the cart
+		for (int index = 0; index < items.length; index++)
 	      {
-	         ArrayBag nextItem = cart[index]; // Simulate getting item from shopper
-	         items.add(nextItem);
+	         Item nextItem = items[index]; // Simulate getting item from shopper
+	         shoppingCart.add(nextItem);
 	         totalCost = totalCost + nextItem.getPrice();  
 	      } // end for
-		//testing that items were added correctly
-		/*System.out.println("The cart contains " + items.getCurrentSize() +
-                " items(s), as follows:");		
-		Object[] itemArray = items.toArray();
-		for (int index = 0; index < itemArray.length; index++)
-		{
-			System.out.print(itemArray[index] + "\n");
-		} // end for	
-		System.out.println();*/
 		
-		//adding additional items to the bag
-		items.add("Gum", 199);
-		totalCost = totalCost + items.getPrice();
-		items.add("Potatoes", 599);
-		totalCost = totalCost + items.getPrice();
-		items.add("Eggs", 299);
-		totalCost = totalCost + items.getPrice();
-		items.add("Sandals", 1399);
-		totalCost = totalCost + items.getPrice();
-		items.add("Screwdriver", 899);
-		totalCost = totalCost + items.getPrice();
+		System.out.println("The cart contains " + shoppingCart.getCurrentSize() +
+                " items(s)");
 		
-		//updating the item list
-		itemArray = items.toArray();
+		//removing item in index spot 1 (Wrench) from the cart and updates total
+		shoppingCart.remove(items[1]);
+		totalCost = totalCost - items[1].getPrice();
 		
-		//displaying the most recently added items in the bag
-		System.out.println("Items added to the cart:");
-		for (int index = 5; index < itemArray.length; index++)
-		{
-			System.out.print(itemArray[index] + "\n");
-		} // end for	
-		System.out.println();
+		//outputs updated cart size after removing item
+		System.out.println("The cart contains " + shoppingCart.getCurrentSize() +
+                " items(s)");
 		
-		//displaying all items in the updated bag
-		System.out.println("The cart contains:");
-		for (int index = 0; index < itemArray.length; index++)
-		{
-			System.out.print(itemArray[index] + "\n");
-		} // end for	
+		shoppingCart.add(new Item("Umbrella", 799));
 		
-		System.out.println("There are " + items.getFrequencyOf("Potatoes") + " instances of Potatoes in the cart");
-		System.out.println("$" + totalCost/100 + "." + totalCost%100);
+		
+		//displays number of items in the cart
+		System.out.println("The cart contains " + shoppingCart.getCurrentSize() +
+                " items(s)");		
+		
+		totalCost = 0;
+		shoppingCart.clear();
+		//loops through all items and adds them to the cart
+				for (int index = 0; index < items.length; index++)
+			      {
+			         Item nextItem = items[index]; // Simulate getting item from shopper
+			         shoppingCart.add(nextItem);
+			         totalCost = totalCost + nextItem.getPrice();  
+			      } // end for
+		
+		//displays an item's name and price, and removes it from the cart until empty
+		while (!shoppingCart.isEmpty())
+	         System.out.println(shoppingCart.remove());	 
+		
+		//displays the combined total cost of all items in the cart
+			System.out.println("Total cost: " + "\t$" + totalCost / 100 + "." +
+	                         totalCost % 100);
+			
+		
 	}//end main
 }//end class

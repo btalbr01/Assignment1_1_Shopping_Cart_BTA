@@ -12,8 +12,6 @@ public final class ArrayBag<T> implements BagInterface<T>
    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 25; // Initial capacity of bag
 	private static final int MAX_CAPACITY = 10000;
-	private int price;
-	private String description;
 
 	/** Creates an empty bag whose initial capacity is 25. */
 	public ArrayBag() 
@@ -37,14 +35,6 @@ public final class ArrayBag<T> implements BagInterface<T>
 
 	/** Creates a bag containing given entries.
 	    @param contents  An array of objects. */
-	
-	public ArrayBag(String productDescription, int productPrice) 
-		{
-	      description = productDescription;
-	      price = productPrice;
-		} // end constructor
-	
-	
    public ArrayBag(T[] contents) 
    {
       checkCapacity(contents.length);
@@ -83,6 +73,7 @@ public final class ArrayBag<T> implements BagInterface<T>
       {
          result[index] = bag[index];
       } // end for
+      
       return result;
 	} // end toArray
    
@@ -102,7 +93,7 @@ public final class ArrayBag<T> implements BagInterface<T>
    
 	/** Counts the number of times a given entry appears in this bag.
        @param anEntry  The entry to be counted.
-       @return  The number of times anEntry appears in this ba. */
+       @return  The number of times anEntry appears in this bag. */
 	public int getFrequencyOf(T anEntry)
 	{
 		checkintegrity();
@@ -201,13 +192,7 @@ public final class ArrayBag<T> implements BagInterface<T>
       
       return result;
 	} // end removeEntry
-	
-	//Returns the price of an item
-	public int getPrice() 
-	{
-      return price;
-	} // end getPrice
-	
+   
    // Returns true if the array bag is full, or false if not.
 	private boolean isArrayFull()
 	{
@@ -237,4 +222,4 @@ public final class ArrayBag<T> implements BagInterface<T>
       if (!integrityOK)
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
-} // end ArrayBag
+} // end ResizableArrayBag
