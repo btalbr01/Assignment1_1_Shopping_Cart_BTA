@@ -10,35 +10,36 @@ public class Application {
 		Item potatoes = new Item("Potatoes", 599);
 		Item wrench = new Item("Wrench", 899);
 		Item book = new Item("Book", 1899);
+		Item pizza = new Item("Pepperoni pizza", 975);
+		Item soda = new Item("Coke", 489);
+		Item corn = new Item("Corn", 79);
 		
 		//Instantiating a new shopping cart to hold items and call methods from the ArrayBag Class
 		ShoppingCart cart = new ShoppingCart(5);
 		
 		
 		//Counts the number of items currently in the cart
-		System.out.println("There are " + cart.countItems() + " items in the cart\n");
+		cart.countItems();
 				
 		//Initial test to see if the cart is empty
-		if(cart.isEmpty())
-		{
-			System.out.println("The cart is empty!");
-		}
-		else System.out.println("The cart is NOT empty!");
-		
-		//adding a return for readability 
-		System.out.println(); 
+		cart.isEmpty();
 		
 		//Adding 4 items to the shopping cart
 		cart.addItem(pen);
 		cart.addItem(potatoes);
 		cart.addItem(book);
 		cart.addItem(wrench);
+		cart.addItem(pizza);
+		cart.addItem(soda);
+		cart.addItem(corn);
 		
-		//Counts the number of items currently in the cart
-		System.out.println("There are " + cart.countItems() + " items in the cart\n");
+		//Rechecking to make sure items were added successfully
+		cart.isEmpty();
 		
-		//Displays updated cart contents and prices
-		cart.toArray();
+		/*Counts the number of items currently in the cart, then displays 
+		 * all items in the cart, their prices and the total price
+		*/
+		cart.countItems();
 		
 		//adding a return for readability 
 		System.out.println(); 
@@ -46,14 +47,13 @@ public class Application {
 		//Removes the last item in the cart. Wrench in this case
 		cart.removeItem();
 		
-		//updated recount of the cart after the item was removed
-		System.out.println("There are " + cart.countItems() + " items in the cart");
+		/*Counts the number of items currently in the cart, then displays 
+		 * all items in the cart, their prices and the total price
+		*/
+		cart.countItems();
 		
 		//adding a return for readability 
 		System.out.println(); 
-		
-		//Displays updated cart contents and prices
-		cart.toArray(); 
 		
 		//Instantiates the pillow item
 		Item pillow = new Item("Pillow", 795);
@@ -64,11 +64,10 @@ public class Application {
 		//adding a return for readability 
 		System.out.println(); 
 		
-		//updated recount of the cart after the item was removed
-		System.out.println("There are " + cart.countItems() + " items in the cart\n");
-		
-		//Displays updated cart contents and prices
-		cart.toArray();
+		/*Counts the number of items currently in the cart, then displays 
+		 * all items in the cart, their prices and the total price
+		*/
+		cart.countItems();
 		
 		//Removes a specific item (pillow) from the cart
 		cart.remove(pillow);
@@ -76,12 +75,10 @@ public class Application {
 		//adding a return for readability 
 		System.out.println(); 
 				
-		//updated recount of the cart after the item was removed
-		System.out.println("There are " + cart.countItems() + " items in the cart\n");
+		/*Counts the number of items currently in the cart, then displays 
+		 * all items in the cart, their prices and the total price
+		*/
 		cart.countItems();
-		
-		//Displays updated cart contents and prices
-		cart.toArray();
 		
 		//adding a return for readability 
 		System.out.println(); 
@@ -89,8 +86,40 @@ public class Application {
 		//Removes the last item in the cart
 		cart.removeItem();
 		
-		//Displays updated cart contents and prices
-		cart.toArray();
+		//Instantiating more items into the cart
+		Item Doritos = new Item("Doritos", 329);
+		Item water = new Item("Water", 362);
+		Item turkey = new Item("Turkey", 450);
+		Item guitar = new Item("Guitar", 51974);
+		Item diamondRing = new Item("Diamond Ring", 1009999);
+		Item milk = new Item("Milk", 371);
+		
+		//Adding new items to the cart
+		cart.addItem(Doritos);
+		cart.addItem(water);
+		cart.addItem(diamondRing);
+		
+		//removing the expensive ring
+		cart.remove(diamondRing);
+		
+		//adding more items
+		cart.addItem(turkey);
+		cart.addItem(guitar);
+		cart.addItem(milk);
+		
+		//removing a specific item from the cart
+		cart.remove(guitar);
+		
+		//removing several nonspecified items from the cart
+		cart.removeItem();
+		cart.removeItem();
+		cart.removeItem();
+		cart.removeItem();
+		
+		//removing another specific item from the cart
+		cart.remove(wrench);
+		
+		
 		
 	}//end main
 }//end class

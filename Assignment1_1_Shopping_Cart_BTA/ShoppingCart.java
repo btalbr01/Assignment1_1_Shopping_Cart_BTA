@@ -11,6 +11,8 @@ public class ShoppingCart<T>
 	
 	public ShoppingCart(int capacity)
 	{
+		System.out.println("Using the ShoppingCart method to instantiate "
+				+ "a shopping cart of initial size " + capacity + ".");
 		cart = new ArrayBag<Item>(); 
 		this.capacity = capacity;
 	} // end empy argument constructor
@@ -20,21 +22,34 @@ public class ShoppingCart<T>
 		this(DEFAULT_CAPACITY);
 	}//end preferred constructor
 	
-	public boolean isEmpty()
+	//Tests whether or not there are any objects in the cart
+	public void isEmpty()
 	{
-      return cart.isEmpty();
+		System.out.println("Testing the isEmpty method.");
+		if(cart.isEmpty())
+		{
+			System.out.println("The cart is empty!\n");
+		}
+		else System.out.println("The cart is NOT empty!\n");
 	} // end isEmpty
 	
 	//Adds an Item object to the bag - includes item name and price
-	public void addItem(Item input)
+	public void addItem(Item anEntry)
 	{
-		cart.add(input);
+		System.out.println("Testing the addItem method.");
+		cart.add(anEntry);
+		System.out.println("\n" + anEntry.getProduct() + " has been added to the cart.\n");
+		countItems();
 	}//end addItem
 	
 	//Removes the last item in the bag
-	public void	 removeItem()
+	public void	removeItem()
 	{
+		System.out.println("Testing the removeItem method.");
 		cart.remove();
+		System.out.println("The last item added to the cart has been removed.\n");
+		countItems();
+		System.out.println();
 	}//end removeItem
 	
 	/*Removes a specific item from the bag
@@ -42,13 +57,20 @@ public class ShoppingCart<T>
 	 */
 	public void remove(Item anEntry)
 	{
+		System.out.println("Testing the remove method to remove a specific object from the cart.");
 		cart.remove(anEntry);
+		System.out.println("\n" + anEntry.getProduct() + " has been removed from the cart.");
+		System.out.println();
+		countItems();
+		System.out.println();
 	} // end remove
 
 	//Calls the ArrayBag method to get the number of items in the cart
-	public int countItems()
+	public void countItems()
 	{
-		return cart.getCurrentSize();
+		System.out.println("Testing the countItems method.");
+		System.out.println("There are " + cart.getCurrentSize() + " item(s) in the cart.\n");
+		toArray();
 	}//end countItems
 	
 	/*
@@ -56,8 +78,9 @@ public class ShoppingCart<T>
 	 * It also tabulates the total cost of all the items.
 	 * The total cost is converted into USD
 	 */
-	public void toArray()
+	private void toArray()
 	{
+		System.out.println("Testing the toArray method.");
 		totalPrice = 0;
 		int x = 0;
 		Object[] itemArray = cart.toArray(); //creates an object to iterate through the array
@@ -70,6 +93,6 @@ public class ShoppingCart<T>
 			x++; //updates the position in the Item array
 		}//end for
 		//Outputs the total cost converted into dollars and sense
-		System.out.println("Total price is: $" + totalPrice/100 + "." + totalPrice%100);
+		System.out.println("Total price is: $" + totalPrice/100 + "." + totalPrice%100 + "\n");
 	}//end toArray
 }//end ShoppingCart
