@@ -1,4 +1,5 @@
 /*@author Ben Albright*/
+//Github link: https://github.com/btalbr01/Assignment1_1_Shopping_Cart_BTA
 public class Application {
 
 	public static void main(String[] args) {
@@ -119,7 +120,16 @@ public class Application {
 		//removing another specific item from the cart
 		cart.remove(wrench);
 		
+		//testing the getFrequency method by adding an additional pen object to the cart
+		cart.getFrequencyOf(pen);
+		cart.addItem(pen);
+		cart.getFrequencyOf(pen);
 		
+		//testing the contains method
+		cart.contains(pen); //returns true because it is in the cart
+		cart.contains(pillow); //returns false because it had been removed
 		
+		//removing all items from the cart
+		cart.clear();
 	}//end main
 }//end class

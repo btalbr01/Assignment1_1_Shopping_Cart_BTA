@@ -73,6 +73,32 @@ public class ShoppingCart<T>
 		toArray();
 	}//end countItems
 	
+	//Outputs how many times a given entry occurs in the cart
+	//@param anEntry The entry to be counted 
+	public void getFrequencyOf(Item anEntry)
+	{
+		System.out.println("Testing the getFrequency method.");
+		System.out.println(anEntry.getProduct() + " is in the cart " + cart.getFrequencyOf(anEntry) + " times\n");
+	}
+	
+	//Checks if a given item is in the cart
+	//@param anEntry the item to be checked
+	public void contains(Item anEntry)
+	{
+		System.out.println("Testing the contains method.");
+		if(cart.contains(anEntry))
+			System.out.println("The cart contains " + anEntry.getProduct() + "\n");
+			else System.out.println("The cart does not contain " + anEntry.getProduct() + "\n");
+	}
+	
+	//Removes all items from the cart
+	public void clear()
+	{
+		System.out.println("Testing the clear method.");
+		cart.clear();
+		isEmpty();
+	}
+	
 	/*
 	 * This method iterates through the array, outputting each item and its respective price.
 	 * It also tabulates the total cost of all the items.
